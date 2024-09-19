@@ -35,7 +35,7 @@ create table fleet(
     speed INT(12),
     consumption INT(12),
     img VARCHAR(255)
-)
+);
 INSERT INTO fleet VALUES
     ('LV-FVA','Petrel','Rotex 912i','Petrel','P912','60','14','/assets/fleet/Petrel/petrel-3.jpg'),
     ('LV-IDE','C150','Continental O-200-A','Cessna','C150','80','22','/assets/fleet/C150/c150-2.jpeg'),
@@ -55,22 +55,22 @@ CREATE TABLE courses (
     licenses VARCHAR(255)
 );
 INSERT INTO courses VALUES
-    ('ppa','16 y 9 meses','3 Meses','40','Primario Completo','Clase II','Ninguna'),
-    ('comercial','20 años','Indefinida','200','Secundario Completo','Clase III','PPA'),
-    ('instructor','21 años','Indefinida','500','Secundario Completo','Clase III','Comercial'),
-    ('primera','24 años','Indefinida','900','Secundario Completo','Clase III','Comercial');
+    ('ppa','16','3 Meses','40','Primario Completo','Clase II','Ninguna'),
+    ('comercial','20','Indefinida','200','Secundario Completo','Clase III','PPA'),
+    ('instructor','21','Indefinida','500','Secundario Completo','Clase III','Comercial'),
+    ('primera','24','Indefinida','900','Secundario Completo','Clase III','Comercial');
 
 
 CREATE TABLE trajectory (
     type VARCHAR(255) NOT NULL PRIMARY KEY,
     data VARCHAR(255),
     icon VARCHAR(255)
-)
+);
 INSERT INTO trajectory VALUES 
     ('alumnos','82 Alumnos Activos','./assets/icons/trajectory/alumnos.png'),
     ('socios','151 Socios Activos','./assets/icons/trajectory/socios.png'),
     ('aeronaves','6 Aeronaves','./assets/icons/trajectory/aeronaves.png'),
-    ('annos','Mas de 80 años','./assets/icons/trajectory/antiguedad.png')
+    ('annos','Mas de 80 años','./assets/icons/trajectory/antiguedad.png');
 
 
 CREATE TABLE forms (
@@ -79,7 +79,7 @@ CREATE TABLE forms (
     phone VARCHAR(255),
     email VARCHAR(255),
     message VARCHAR(255)
-)
+);
 
 
 CREATE TABLE users (
@@ -89,7 +89,7 @@ CREATE TABLE users (
     surname VARCHAR(255),
     email VARCHAR(255),
     role VARCHAR(255)
-)
+);
 
 
 CREATE TABLE auditlog (
@@ -98,5 +98,5 @@ CREATE TABLE auditlog (
     user_dni INT(255) NOT NULL,
     description VARCHAR(255),
     table_name VARCHAR(255),
-    primary_key_changed VARCHAR(255),
-)
+    primary_key_changed VARCHAR(255)
+);
