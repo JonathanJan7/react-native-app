@@ -1,0 +1,541 @@
+/* ==================== Bienvenida ==================== */
+.welcome {
+  display: flex;
+  background-color: var(--negro);
+}
+.welcome-title {
+  z-index: 1;
+  color: white;
+  position: absolute;
+  width: 60%;
+  left: 0;
+  right: 0;
+  top: 35vh;
+  bottom: 0;
+  margin: auto;
+}
+.welcome-title h1 {
+  justify-content: center;
+  font-size: 5em;
+  color: white;
+  text-shadow: 2px 5px #000000;
+  margin: 0px;
+  white-space: nowrap;
+}
+.welcome-title h2 {
+  font-size: 3rem;
+  font-style: italic;
+  background-color: white;
+  margin: 0px;
+  box-shadow: 0 2px 4px #000;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+.welcome div {
+  display: inline-block;
+}
+
+.welcome-carousel {
+  width: 100%;
+  height: 100% !important;
+  margin: 0 auto 0;
+  overflow: hidden;
+  height: 60em;
+}
+.welcome-carousel ul {
+  margin: 0%;
+  display: flex;
+  padding: 0;
+  width: 300%;
+  animation: slide 20s infinite ease-in-out;
+}
+.welcome-carousel li {
+  list-style: none;
+  width: 100%;
+  height: 100vh;
+}
+.welcome-carousel img {
+  height: 100vh;
+  width: 100%;
+  object-fit: cover;
+}
+
+@keyframes slide {
+  0% {
+    margin-left: 0%;
+  }
+  20% {
+    margin-left: 0%;
+  }
+
+  25% {
+    margin-left: -100%;
+  }
+  45% {
+    margin-left: -100%;
+  }
+
+  50% {
+    margin-left: -200%;
+  }
+  70% {
+    margin-left: -200%;
+  }
+}
+
+@media (max-width: 768px) {
+  .welcome-title {
+    width: 90%;
+  }
+  .welcome-title h1 {
+    line-height: normal;
+    white-space: unset;
+    font-size: 4em;
+  }
+  .welcome-title h2 {
+    font-size: 1.5em;
+    margin: 0;
+  }
+}
+
+
+/* ==================== Trajectory ==================== */
+.trajectory-section{
+  background-color: white;
+  border-color: var(--secundarioOscuro);
+  border-width: 0.5em;
+  border-style: solid none none none;
+}
+.trajectory-section .section-title{
+  background: none;
+  border-radius: 0;
+  box-shadow: none;
+  color: #000 !important;
+  
+}
+.trajectory-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  padding: 5rem;
+  padding-top: 0.3em;
+  padding-bottom: 0.5em;
+  border-color: var(--secundarioOscuro);
+  border-width: 0.5em;
+  gap: .1em;
+}
+
+.trajectory-container {
+  text-align: center;
+}
+
+.trajectory-container p {
+  font-size: 1.3em;
+  color: black;
+}
+
+.trajectory-container img {
+  width: 8.5rem;
+  height: 8.5rem;
+}
+
+@media (max-width: 768px) {
+  .trajectory-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: .1rem;
+  }
+  .trajectory-container p {
+    font-size: 1em;
+  }
+  .trajectory-container img {
+    width: 4.5rem;
+    height: 4.5rem;
+  }
+}
+
+
+/* ======================= Extras ======================= */
+.titulo-seccion {
+  border-radius: 7px;
+  font-size: 2.5em;
+  margin: 0;
+  margin-left: 2em;
+  margin-right: 2em;
+  box-shadow: 0 2px 8px #000;
+}
+@media (max-width: 768px) {
+  .titulo-seccion{
+    font-size: 2em;
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+  }
+}
+
+
+/* ============================= News ======================================= */
+.news-section{
+  background-color: var(--secundario);
+  padding:1em;
+  border-color: var(--secundarioOscuro);
+  border-width: 0.5em;
+  border-style: solid none none none;
+}
+.news{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content:space-evenly !important;
+  flex-direction: row;
+  justify-content: center;
+  margin: 2em;
+  margin-top: 0.5em;
+  margin-bottom: 0;
+}
+
+.news-section button{
+  font-family: var(--fuentePrincipal);
+  font-size: 1em;
+  cursor: pointer;
+  background-color: white;
+  padding: 10px 45px;
+  width: 80%;
+  box-shadow: 0 2px 8px #000;
+  transition: 0.5s;
+  text-align: center;
+  background-size: 200% auto;
+  color: var(--secundarioOscuro);
+  border-radius: var(--radius);
+  border-color: transparent;
+  display: block;
+  margin: auto;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+.news-section button:hover{
+  background-color: var(--gris);
+}
+
+@media (max-width: 768px) {
+  .news{
+    margin-top: 1em;
+  }
+  .news-card img {
+    width: 100%;
+    height: auto;
+    padding: 0;
+    border-top-left-radius: var(--radius);
+    border-top-right-radius: var(--radius);
+  }
+  .news-card-info{
+    width: 20em;
+  }
+  .news-card p {
+    font-size: 0.8em;
+  }
+  .news-card h2{
+    font-size: 2em;
+  }
+  .news-card h3{
+    font-size: 1em;
+  }
+}
+
+/* ============================= Fleet ======================================= */
+.fleet-section {
+  background-color: rgba(145, 145, 145, 0.5);
+  background-image: url("../../assets/nubes.jpg");
+  background-blend-mode: soft-light;
+  padding-top: 2em;
+  border-width: 0.5em;
+  border-color: var(--secundarioOscuro);
+  border-style: solid none none none;
+}
+
+.fleet-section h2 {
+  background-color: white;
+  color: #000 !important;
+  margin-left: 1.2em;
+  margin-right: 1.2em;
+  border-radius: var(--radius);
+}
+.carousel {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  height: 400px;
+  -webkit-perspective: 500px;
+  perspective: 500px;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  -webkit-transform-origin: 0% 50%;
+  transform-origin: 0% 50%;
+  min-height: 70rem;
+  margin-top: 5rem;
+}
+.carousel .carousel-item {
+  visibility: hidden;
+  width: 70vh;
+  height: 700px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
+}
+.carousel .carousel-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  border-radius: var(--radius);
+  box-shadow: 0 3px 10px #000;
+}
+.carousel .indicators {
+  display: none;
+}
+
+.airplane-name {
+  font-size: 4em;
+  color: black;
+  background-color: white;
+  text-shadow: 2px 1px #000000;
+  padding: 0 1rem 0 1rem;
+  margin-bottom: 0;
+}
+.airplane-info {
+  font-size: 3em;
+  text-shadow: 2px 2px #000000;
+  font-style: italic;
+  padding: 1rem;
+  margin-top: 0;
+  color: white;
+}
+
+.fleet-section .boton-sec-oscuro{
+  margin-left: 20%;
+  margin-right: 20%;
+  margin-top: 2em;
+  margin-bottom: 2em;
+  width: 60%;
+  font-size: 1em;
+}
+
+@media (max-width: 900px) {
+  .fleet{
+    margin-bottom: -18em;
+  }
+  .carousel{
+    margin-top: -5em;
+    margin-bottom: -5em;
+  }
+  .carousel .carousel-item {
+    width: 80%;
+    height: 70%;
+  }
+  .airplane-name {
+    font-size: 6rem;
+  }
+  .airplane-info {
+    font-size: 4rem;
+  }
+  .fleet .boton-sec-oscuro{
+    margin-top: 1em;
+  }
+}
+
+
+/* ============================ Courses ==========================*/
+.courses-section {
+  padding-left: 15%;
+  padding-right: 15%;
+  padding-top: 2em;
+  background-image: url("https://images.pexels.com/photos/3678749/pexels-photo-3678749.jpeg?cs=srgb&dl=pexels-darli-donizete-3678749.jpg&fm=jpg");
+  background-size: cover;
+  background-attachment:fixed;
+  background-position: center;
+  border-color: var(--secundarioOscuro);
+  border-style: solid none none none;
+  border-width: 0.5em;
+}
+.courses-card {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1em;
+  border-radius: var(--radius);
+  background-color: white;
+  box-shadow: 0 2px 8px #000;
+  transition: ease-in 0.4s;
+}
+.courses-card img {
+  padding: 1em;
+  border-radius: var(--radius);
+  border-bottom-color: #000;
+  border-bottom-width: 3px;
+  padding-bottom: 0;
+}
+.courses-card h2 {
+  margin-top: -0.2em;
+  margin-bottom: 1rem;
+  text-align: center;
+  font-size: 2em;
+  padding-top: 0.6em;
+  color: var(--secundarioOscuro);
+  animation: 3s ease-in 1s 2 reverse both paused slidein;
+}
+.courses-card:hover {
+  box-shadow: 0 5px 20px #000;
+}
+
+.courses-section .boton-sec-oscuro {
+  display: block;
+  margin: auto;
+  margin-bottom: 1em;
+}
+
+
+.courses-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 5rem;
+  padding: 5%;
+  padding-top: 5rem;
+  padding-bottom: 2em;
+}
+.courses-requirements h3 {
+  transition: all 2s ease;
+  transition-property: opacity;
+  font-size: 1.5em;
+  margin: 0;
+  color: var(--secundarioOscuro);
+}
+.courses-requirements p {
+  font-size: 1.2em;
+  text-align: center;
+  padding: 0.8rem;
+  transition: all 1.5s ease;
+  transition-property: opacity;
+  opacity: 0;
+}
+
+.courses-requirements hr {
+  margin: 0;
+  margin-bottom: 1em;
+  height: 5px;
+  background-color: var(--secundarioOscuro);
+}
+@media (max-width: 768px) {
+  .courses {
+    padding-left: 2em;
+    padding-right: 2em;
+  }
+  .courses-card h2 {
+    font-size: 1.8em;
+  }
+  .courses-requirements h3 {
+    font-size: 1.3em;
+  }
+  .courses-requirements p {
+    font-size: 1.2em;
+  }
+  
+  .courses-grid {
+    grid-template-columns: repeat(1, 1fr);
+    padding: 10%;
+    padding-top: 1.5em;
+    gap: 1.5em;
+  }
+}
+
+/* ========================= Clima ========================= */
+.weather-section{
+  border-color: var(--secundarioOscuro);
+  border-style: solid none solid none;
+  border-width: 0.5em;
+  background-color: rgba(0, 0, 0, .5);
+  background-image: url("../../assets/fondoClima.jpg");
+  background-blend-mode: soft-light;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 1em;
+}
+
+.weather {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content:space-around;
+  margin-left: 2em;
+  margin-right: 2em;
+}
+.weather-card {
+  padding: 0.5em;
+  margin: 1em;
+  display: flex;
+  flex-direction: row;
+  border-radius: var(--radius);
+  background-color: white;
+  box-shadow: 0 2px 8px #000;
+  transition: ease-in 0.4s;
+  align-items: center;
+}
+.weather-card hr {
+    margin-left: 1em;
+  margin-bottom: 1em;
+  height: 80px;
+  background-color: var(--secundarioOscuro);
+  width: 5px;
+}
+.weather-card img {
+  height: 5em;
+  width: 5em;
+  padding: 0.5em;
+}
+.weather-card p {
+  padding: 1em;
+  font-size: 2em;
+}
+.metar{
+  align-content: center;
+  padding: 1em;
+}
+.weather-title{
+  font-size: 2.5em;
+  margin: 0;
+  padding-bottom: 0em;
+  color: white;
+  text-shadow: 2px 3px #000000;
+}
+.metar-codified{
+  padding: 0.2em;
+  background-color: white;
+  border-radius: var(--radius);
+  box-shadow: 0 2px 8px #000;
+  font-size: 2em;
+  color: var(--secundarioOscuro);
+  text-align: center;
+  margin-left: 2em;
+  margin-right: 2em;
+}
+
+@media (max-width: 700px){
+  .weather-section{
+    padding-bottom: 0.5em;
+  }
+  .weather {
+      display: block;
+      margin: 1em;
+  }
+  .weather-card {
+      margin-left: 0.5em;
+      margin-right: 0.5em;
+      font-size: 0.8em;
+  }
+  .metar-codified{
+      margin: 0.5em;
+      padding: 0.5em;
+  }
+}
