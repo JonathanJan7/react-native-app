@@ -13,8 +13,8 @@ import FleetDetail from './screens/FleetDetail';
 function MyStack() {
   return (
     <Stack.Navigator>
-      <Stack.Screen name='CreateFleet' component={CreateFleet} />
       <Stack.Screen name='FleetList' component={FleetList} />
+      <Stack.Screen name='CreateFleet' component={CreateFleet} />
       <Stack.Screen name='FleetDetail' component={FleetDetail} />
     </Stack.Navigator>
   )
