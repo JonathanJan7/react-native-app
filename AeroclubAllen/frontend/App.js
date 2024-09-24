@@ -99,23 +99,23 @@ function MyStack() {
 const Drawer = createDrawerNavigator();
 
 
-/*export default function App() {
+export default function App() {
   return (
     <NavigationContainer>
       <Drawer.Navigator initialRouteName={"Home"}>
         <Drawer.Screen name="Home" component={MyStack} />
-        <Drawer.Screen name="Home" component={CreateFleet} />
+        <Drawer.Screen name="CreateFleet" component={CreateFleet} />
       </Drawer.Navigator>
     </NavigationContainer>
   );
-}*/
-export default function App() {
+}
+/*export default function App() {
   return (
       <NavigationContainer>
         <MyStack />
       </NavigationContainer>
   );
-}
+}*/
 
 const styles = StyleSheet.create({
   container: {
