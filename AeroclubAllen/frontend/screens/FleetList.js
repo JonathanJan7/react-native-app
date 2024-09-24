@@ -1,6 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import { View, Text, FlatList, ScrollView, StyleSheet, Image } from 'react-native';
 import { getFleets } from '../api';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import { Card, Button, Icon } from '@rneui/themed';
 
@@ -19,6 +22,8 @@ const FleetList = (props) => {
         loadFleets();
     }, [])
 
+    const Tab = createBottomTabNavigator();
+
     return(
         <ScrollView style={styles.container}>
             {fleets.map((item) => (
@@ -34,6 +39,7 @@ const FleetList = (props) => {
                     </View>
                 </Card>
             ))}
+            
         </ScrollView>
     )
 
