@@ -56,9 +56,12 @@ const FleetList = (props) => {
 
     const Tab = createBottomTabNavigator();
 
+    const BASE_URL = 'C:/Users/Jonathan/Documents/LabProg/react-native-app/LaboratorioProgramacion/AeroclubAllen/backend/src/static'; // Cambia esto a tu URL base real
+
     const renderFleet = ({ item }) => (
         <Card key={item.plate}>
-            <Card.Image source={{ uri: 'https://awildgeographer.files.wordpress.com/2015/02/john_muir_glacier.jpg' }} />
+            <Card.Image source={{ uri: `{BASE_URL}{item.img}` }} />  
+            <Text>`{BASE_URL}{item.img}`</Text>      
             <Card.Title>{item.model}</Card.Title>
             <Card.Divider />
             <View>

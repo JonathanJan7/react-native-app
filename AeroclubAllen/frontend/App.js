@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Button } from 'react-native';
+import { StyleSheet, Text, View, Button, ImageBackground } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -17,6 +17,8 @@ import CourseList from './screens/CourseList';
 import CourseDetail from './screens/CourseDetail';
 import NewsList from './screens/NewsList';
 import NewsDetail from './screens/NewsDetail';
+import Home from './screens/Home';
+import CreateNews from './screens/CreateNews';
 
 
 /*function MyStack() {
@@ -78,6 +80,8 @@ function MyStack() {
             iconName = focused ? 'library' : 'library-outline';
           } else if (route.name === 'Noticias'){
             iconName = focused ? 'newspaper' : 'newspaper-outline';
+          } else if (route.name === 'home'){
+            iconName = focused ? 'home' : 'home-outline';
           }
           // You can return any component that you like here!
           return <Ionicons name={iconName} size={size} color={color} />;
@@ -88,6 +92,7 @@ function MyStack() {
       })}
     
     >
+      <Tab.Screen name="home" component={Home} />
       <Tab.Screen name="Nuestra Flota" component={FleetStackScreen} />
       <Tab.Screen name="Cursos" component={CourseStackScreen} />
       <Tab.Screen name="Noticias" component={NewsStackScreen} />
@@ -99,23 +104,24 @@ function MyStack() {
 const Drawer = createDrawerNavigator();
 
 
-export default function App() {
+/*export default function App() {
   return (
     <NavigationContainer>
-      <Drawer.Navigator initialRouteName={"Home"}>
-        <Drawer.Screen name="Home" component={MyStack} />
-        <Drawer.Screen name="CreateFleet" component={CreateFleet} />
-      </Drawer.Navigator>
+        <Drawer.Navigator initialRouteName={"Home"}>
+          <Drawer.Screen name="Home" component={MyStack} />
+          <Drawer.Screen name="CreateFleet" component={CreateFleet} />
+        </Drawer.Navigator>
     </NavigationContainer>
+    
   );
-}
-/*export default function App() {
+}*/
+export default function App() {
   return (
       <NavigationContainer>
         <MyStack />
       </NavigationContainer>
   );
-}*/
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -124,6 +130,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  background: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '100%',
+    height: '100%',
+  }
 });
 
 /*
