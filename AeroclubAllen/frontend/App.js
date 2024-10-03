@@ -59,6 +59,7 @@ function NewsStackScreen() {
     <NewsStack.Navigator>
       <NewsStack.Screen name='NewsList' component={NewsList} options={{ title: 'Noticias' }} />
       <NewsStack.Screen name='NewsDetail' component={NewsDetail} />
+      <NewsStack.Screen name='CreateNews' component={CreateNews} />
     </NewsStack.Navigator>
   )
 }

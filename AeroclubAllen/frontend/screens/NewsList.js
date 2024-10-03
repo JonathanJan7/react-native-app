@@ -4,6 +4,7 @@ import { getNews } from '../api';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { useFocusEffect } from '@react-navigation/native';
 
 import { Card, Button, Icon } from '@rneui/themed';
 
@@ -66,6 +67,20 @@ const NewsList = (props) => {
         }
     };
 
+    const newObject = props.route.params?.row;//hay un nuevo ojbeto?
+    
+    useFocusEffect(
+        React.useCallback(() => {
+            if (newObject) {
+                // Agregar el nuevo objeto a la lista existente
+                console.log(newObject);
+                setFleets((fleets) => [...fleets, newObject]);
+                props.route.params.row = 0;//limpiar variable
+            }
+        }, [newObject])
+    );
+
+
     const renderFleet = ({ item }) => (
         <Card key={item.id}>
             <Card.Image source={{ uri: 'https://awildgeographer.files.wordpress.com/2015/02/john_muir_glacier.jpg' }} />
@@ -79,7 +94,34 @@ const NewsList = (props) => {
 
     const Tab = createBottomTabNavigator();
 
-    return(
+    return (
+            <FlatList
+                data={fleets}
+                renderItem={renderFleet}
+                keyExtractor={(item) => (item.id ? item.id.toString() : Math.random().toString())}
+                onEndReached={loadMore}
+                onEndReachedThreshold={0.5} // Cargar más cuando estemos al 50% del final
+                style={styles.container}
+                ListHeaderComponent={
+                    <View style={styles.header}>
+                        <Button
+                            title="Agregar Noticia"
+                            onPress={() => {
+                                props.navigation.navigate('CreateNews')
+                            }}
+                        />
+                    </View>
+                }
+                ListFooterComponent={loading ? (
+                    <View style={{ padding: 20 }}>
+                        <ActivityIndicator size="large" color="#0000ff" />
+                        <Text style={{ textAlign: 'center', marginTop: 10 }}>Loading...</Text>
+                    </View>
+                ) : null}
+            />
+    )
+
+    /*return(
         <FlatList
             data={fleets}
             renderItem={renderFleet}
@@ -94,7 +136,7 @@ const NewsList = (props) => {
                 </View>
             ) : null}
         />
-    )
+    )*/
 
     /*return (
         <ScrollView style={styles.container}>
@@ -120,7 +162,10 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         padding: 15,
-    }
+    },
+    header: {
+        marginBottom: 20,
+    },
 })
 
 export default NewsList

@@ -60,8 +60,7 @@ const FleetList = (props) => {
 
     const renderFleet = ({ item }) => (
         <Card key={item.plate}>
-            <Card.Image source={{ uri: `{BASE_URL}{item.img}` }} />  
-            <Text>`{BASE_URL}{item.img}`</Text>      
+            <Card.Image source={{ uri: 'https://awildgeographer.files.wordpress.com/2015/02/john_muir_glacier.jpg' }} />     
             <Card.Title>{item.model}</Card.Title>
             <Card.Divider />
             <View>
