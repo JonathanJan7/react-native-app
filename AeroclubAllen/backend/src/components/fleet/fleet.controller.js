@@ -1,4 +1,7 @@
+import path from "path";
+import { fileURLToPath } from 'url';
 import { somethingWentWrong500 } from "../../error/error.handler.js";
+import fs from "fs";
 
 // Where fleet imgs are saved
 import { AIRPLANE_IMG_ROUTE } from "../../config.js";
@@ -6,6 +9,9 @@ import { AIRPLANE_IMG_ROUTE } from "../../config.js";
 // Auditlog
 import auditlog from "../auditlog/auditlog.dao.js";
 import fleet from "./fleet.dao.js";
+
+const __dirname = fileURLToPath(import.meta.url);
+const imgRoute = path.join(__dirname, '../../../static');
 
 // Get Fleet, returns the fleet from x position and an 'n' ammount of airplanes
 export const getFleet = async (req, res) => {
@@ -133,5 +139,22 @@ export const deleteAirplane = async (req, res) => {
 		}
 	} catch (e) {
 		somethingWentWrong500(e, res);
+	}
+};
+
+export const getPlaneImage = async (req, res) => {
+	try {
+	  const { plate } = req.params;
+	  const imgPath = await fleet.getPlateImg(plate);
+	  const imagePath = path.join(imgRoute, imgPath);
+	  fs.access(imagePath, fs.constants.F_OK, (err) => {
+		if (err) {
+		  return res.status(404).json({ message: 'Image not found' });
+		}
+		res.sendFile(imagePath);
+	  });
+	} catch (error) {
+	  console.error('Error fetching fleet image:', error);
+	  res.status(500).json({ message: 'Internal server error' });
 	}
 };

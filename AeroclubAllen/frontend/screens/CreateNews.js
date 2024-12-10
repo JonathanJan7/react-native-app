@@ -2,8 +2,7 @@ import React, { useState } from 'react'
 import { View, Button, TextInput, ScrollView, StyleSheet, Text, Alert } from 'react-native'
 import ImageUploader from '../components/ImageUploader'
 import DatePicker from 'react-native-datepicker';
-
-
+import { BASE_URL } from '../api'
 
 const CreateNews = (props) => {
 
@@ -32,7 +31,7 @@ const CreateNews = (props) => {
     };
 
     // URL endpoint
-    const POST_URL = 'http://192.168.0.43:3000/api/news';
+    const POST_URL = `${BASE_URL}/news`;
     const handleSubmit = async () => {
         try {
             //Petición POST al backend
@@ -81,18 +80,18 @@ const CreateNews = (props) => {
             </View>
             <View style={styles.inputGroup}>
                 <Text>Titulo:</Text>
-                <TextInput placeholder='Insert Title' onChangeText={(value) => handleChangeText('title', value)} />
+                <TextInput placeholder='Titulo' onChangeText={(value) => handleChangeText('title', value)} />
             </View>
             <View style={styles.inputGroup}>
                 <Text>Descripcion:</Text>
-                <TextInput placeholder='Insert Description' onChangeText={(value) => handleChangeText('description', value)} />
+                <TextInput placeholder='Descripcion' onChangeText={(value) => handleChangeText('description', value)} />
             </View>
             <View style={styles.inputGroup}>
                 <Text>Nombre Img:</Text>
-                <TextInput placeholder='Insert Img name' onChangeText={(value) => handleChangeText('img', value)} />
+                <TextInput placeholder='Nombre Imagen' onChangeText={(value) => handleChangeText('img', value)} />
             </View>
             <View>
-                <Button title='Save News' onPress={handleSubmit} />
+                <Button title='Crear Noticia' onPress={handleSubmit} />
             </View>
         </ScrollView>
     )

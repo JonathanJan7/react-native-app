@@ -1,6 +1,7 @@
 import React from 'react'
 import { View, Text, ScrollView } from 'react-native'
 import { Card, Button, Icon } from '@rneui/themed';
+import { BASE_URL } from '../api'
 
 const FleetDetail = (props) => {
     //recibo el item que me pasa la screen anterior
@@ -11,25 +12,25 @@ const FleetDetail = (props) => {
         <ScrollView >
                 <Card key={item.plate}>
                     {/* Imagen */}
-                    <Card.Image source={{ uri: 'https://awildgeographer.files.wordpress.com/2015/02/john_muir_glacier.jpg' }} />
+                    <Card.Image source={{ uri: `${BASE_URL}/airplane/img/${item.plate}` }} />
                     {/* Título de la Card */}
                     <Card.Title>{item.model}</Card.Title>
                     <Card.Divider />
                     {/* Boton para mas detalles */}
                     <Text style={{ marginBottom: 10 }}>
-                        Brand: {item.brand}
+                        Marca: {item.brand}
                     </Text>
                     <Text style={{ marginBottom: 10 }}>
-                        Consumption: {item.consumption}
+                        Consumo: {item.consumption}
                     </Text>
                     <Text style={{ marginBottom: 10 }}>
-                        Engine: {item.engine}
+                        Motor: {item.engine}
                     </Text>
                 <Text style={{ marginBottom: 10 }}>
-                    Speed: {item.speed}
+                    Velocidad: {item.speed}
                 </Text>
                 <Text style={{ marginBottom: 10 }}>
-                    Plate: {item.plate}
+                    Patente: {item.plate}
                 </Text>
                 </Card>
         </ScrollView>

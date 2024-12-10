@@ -1,11 +1,12 @@
 
+export const BASE_URL = 'http://192.168.0.43:3000/api/';
 //const APIFLEETS = 'http://192.168.0.43:3000/api/fleet?x0=0&n=4';
-const APICOURSES = 'http://192.168.0.43:3000/api/courses';
+const APICOURSES = `${BASE_URL}/courses`;
 //const APINEWS = 'http://192.168.0.43:3000/api/news?x0=1&n=10';
 
 //Consulto la API para Fleets
 export const getFleets = async (desde, hasta) => {
-    const APIFLEETS = 'http://192.168.0.43:3000/api/fleet?x0='+desde+'&n='+hasta;
+    const APIFLEETS = `${BASE_URL}/fleet?x0=`+desde+'&n='+hasta;
     const res = await fetch(APIFLEETS);
     return await res.json();
 };
@@ -18,7 +19,7 @@ export const getCourses = async () => {
 
 //Consulto la API para Noticias
 export const getNews = async (desde, hasta) => {
-    const APINEWS = 'http://192.168.0.43:3000/api/news?x0='+desde+'&n='+hasta;
+    const APINEWS = `${BASE_URL}/news?x0=`+desde+'&n='+hasta;
     const res = await fetch(APINEWS);
     return await res.json();
 };

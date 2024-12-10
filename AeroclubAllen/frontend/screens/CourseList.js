@@ -4,7 +4,7 @@ import { getCourses } from '../api';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-
+import { BASE_URL } from '../api'
 import { Card, Button, Icon } from '@rneui/themed';
 
 
@@ -24,16 +24,23 @@ const CourseList = (props) => {
 
     const Tab = createBottomTabNavigator();
 
+    const getTitle = (item) => {
+        const titles = {
+            'ppa': 'Piloto Privado de Avion',
+            'instructor': 'Instructor de Vuelo',
+            'comercial': 'Piloto Comercial de Avion',
+            'primera': 'Piloto de Primera Clase',        
+        };
+        return titles[item];
+    }
+
     return (
         <ScrollView style={styles.container}>
             {fleets.map((item) => (
                 <Card key={item.class}>
-                    {/* Imagen */}
-                    <Card.Image source={{ uri: 'https://awildgeographer.files.wordpress.com/2015/02/john_muir_glacier.jpg' }} />
-                    {/* Título de la Card */}
-                    <Card.Title>{item.class}</Card.Title>
+                    <Card.Image source={{ uri: `${BASE_URL}/courses/img/${item.class}` }} />
+                    <Card.Title>{getTitle(item.class)}</Card.Title>
                     <Card.Divider />
-                    {/* Boton para mas detalles */}
                     <View>
                         <Button title='Ver Mas' onPress={() => props.navigation.navigate('CourseDetail', { item })} />
                     </View>

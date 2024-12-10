@@ -1,5 +1,11 @@
 import { somethingWentWrong500 } from "../../error/error.handler.js";
-import courses from "./courses.dao.js"
+import courses from "./courses.dao.js";
+import path from "path";
+import { fileURLToPath } from 'url';
+import fs from "fs";
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const coursesImgs = path.join(__dirname, '../../static/assets/courses');
 
 // Get Courses
 export const getCourses = async (req, res) => {
@@ -92,3 +98,20 @@ export const deleteCourse = async (req, res) => {
 		somethingWentWrong500(e, res);
 	}
 };
+
+export const getCourseImg = async (req, res) => {
+	const { course_class } = req.params;
+
+	try {
+		const imagePath = path.join(coursesImgs, course_class + '.jpg');
+		
+		fs.access(imagePath, fs.constants.F_OK, (err) => {
+			if (err) {
+			  return res.status(404).json({ message: 'Image not found' });
+			}
+			res.sendFile(imagePath);
+		  });
+	} catch (e) {
+		somethingWentWrong500(e, res);
+	}
+}

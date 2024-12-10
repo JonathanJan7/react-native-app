@@ -1,5 +1,7 @@
-// Data Base
+import path from "path";
+import { fileURLToPath } from 'url';
 import { somethingWentWrong500 } from "../../error/error.handler.js";
+import fs from "fs";
 import news from "./news.dao.js";
 
 // Where news imgs are saved
@@ -8,6 +10,8 @@ import { NEWS_IMG_ROUTE } from "../../config.js";
 // Auditlog
 import auditlog from "../auditlog/auditlog.dao.js";
 
+const __dirname = fileURLToPath(import.meta.url);
+const imgRoute = path.join(__dirname, '../../../static');
 
 // Get news
 export const getNews = async (req, res) => {
@@ -27,7 +31,10 @@ export const getNews = async (req, res) => {
 
 // Create news
 export const createNews = async (req, res) => {
-	const { date, title, description, imgName } = JSON.parse(req.body.data);
+	//const { date, title, description, imgName } = JSON.parse(req.body.data);
+	
+	const { date, title, description, imgName } = req.body.data;
+	
 
 	if (date == null || title == null || description == null || imgName == null) {
 		res.status(400).json({
@@ -38,10 +45,14 @@ export const createNews = async (req, res) => {
 
 		try {
 			await news.createNews(date, title, description, imgName);
+			
 			// Gets the id of the recently added news, and creates a log of it
 			const rows = await news.getLastId();
-			await auditlog.createLog(req.user.dni, "creation", "news", rows[0].id);
-			res.send("Post Success");
+			console.log(rows);
+			
+			//await auditlog.createLog(req.user.dni, "creation", "news", rows[0].id);
+			//res.send("Post Success");
+			res.status(201).json({ message: 'Objeto creado exitosamente', rows});
 		} catch (e) {
 			somethingWentWrong500(e, res);
 		}
@@ -94,3 +105,20 @@ export const deleteNews = async (req, res) => {
 		somethingWentWrong500(e, res);
 	}
 };
+
+export const getNewsImg = async (req, res) => {
+	const { id } = req.params;
+	
+	try {
+		const imgPath = await news.getNewsImg(id);
+		const imagePath = path.join(imgRoute, imgPath);
+		fs.access(imagePath, fs.constants.F_OK, (err) => {
+			if (err) {
+			return res.status(404).json({ message: 'Image not found' });
+			}
+			res.sendFile(imagePath);
+		});
+	} catch (e) {
+		res.status(404).send("Image not found");
+	}
+}

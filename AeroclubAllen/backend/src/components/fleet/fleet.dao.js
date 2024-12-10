@@ -55,4 +55,11 @@ fleet.deleteAirplane = async (plate) => {
 		throw error;
 	}
 };
+
+fleet.getPlateImg = async (plate) => {
+	try{
+		const [rows] = await pool.query("SELECT img FROM fleet WHERE plate = ?", [plate]);
+		return rows[0].img;
+	}catch(error){throw error;}
+}
 export default fleet;

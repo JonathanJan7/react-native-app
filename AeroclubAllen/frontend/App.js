@@ -81,19 +81,19 @@ function MyStack() {
             iconName = focused ? 'library' : 'library-outline';
           } else if (route.name === 'Noticias'){
             iconName = focused ? 'newspaper' : 'newspaper-outline';
-          } else if (route.name === 'home'){
+          } else if (route.name === 'Home'){
             iconName = focused ? 'home' : 'home-outline';
           }
           // You can return any component that you like here!
           return <Ionicons name={iconName} size={size} color={color} />;
         },
-        tabBarActiveTintColor: 'tomato',
+        tabBarActiveTintColor: '#90d5ff',
         tabBarInactiveTintColor: 'gray',
         headerShown: false,
       })}
     
     >
-      <Tab.Screen name="home" component={Home} />
+      <Tab.Screen name="Home" component={Home} />
       <Tab.Screen name="Nuestra Flota" component={FleetStackScreen} />
       <Tab.Screen name="Cursos" component={CourseStackScreen} />
       <Tab.Screen name="Noticias" component={NewsStackScreen} />

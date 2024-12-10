@@ -5,6 +5,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { useFocusEffect } from '@react-navigation/native';
+import { BASE_URL } from '../api'
 
 import { Card, Button, Icon } from '@rneui/themed';
 
@@ -83,7 +84,7 @@ const NewsList = (props) => {
 
     const renderFleet = ({ item }) => (
         <Card key={item.id}>
-            <Card.Image source={{ uri: 'https://awildgeographer.files.wordpress.com/2015/02/john_muir_glacier.jpg' }} />
+            <Card.Image source={{ uri: `${BASE_URL}/news/img/${item.id}` }} />
             <Card.Title>{item.title}</Card.Title>
             <Card.Divider />
             <View>

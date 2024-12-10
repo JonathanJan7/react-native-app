@@ -12,6 +12,11 @@ import flash from "connect-flash";
 import passport from "./lib/passport.js";
 import session from "express-session";
 //import validator from "express-validator";
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+// Obtener la ruta absoluta del directorio "src/static"
+const staticPath = path.resolve('src/static');
 
 const app = express();
 

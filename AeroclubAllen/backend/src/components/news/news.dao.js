@@ -15,24 +15,32 @@ news.getNews = async (x0, n) => {
 //CREATE NEWS
 news.createNews = async (date, title, description, imgName) => {
 	try {
+		console.log('creando...');
 		const [rows] = await pool.query("INSERT INTO news (date, title, description, img) VALUES (?,?,?,?);", [
 			date,
 			title,
 			description,
-			imgRoute,
+			imgName,
 		]);
+		
 		return rows;
 	} catch (error) {
+		console.log(error);
+		
 		throw error;
+		
 	}
 };
 
 //GET LAST ID
 news.getLastId = async () =>{
     try {
-        [rows] = await pool.query("SELECT id FROM news ORDER BY id DESC LIMIT 1");
+        //const [rows] = await pool.query("SELECT id FROM news ORDER BY id DESC LIMIT 1");
+		const [rows] = await pool.query("SELECT * FROM news ORDER BY id DESC LIMIT 1");
         return rows;
     } catch (error) {
+		console.log(error);
+		
         throw error;
     }
 }
@@ -69,5 +77,14 @@ news.deleteNews = async (id)=> {
         throw error;
     }
 }
+
+news.getNewsImg = async (id) => {
+	try {		
+		const [rows] = await pool.query("SELECT img FROM news WHERE id = ?", [id]);
+		return rows[0].img;
+	} catch (error) {
+		throw error;
+	}
+};
 
 export default news;
