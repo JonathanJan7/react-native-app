@@ -9,12 +9,14 @@ import { Card, Button, Icon } from '@rneui/themed';
 
 
 const CourseList = (props) => {
-
     const [fleets, setFleets] = useState([])
 
     //load fleets from backend
     const loadFleets = async () => {
         const data = await getCourses();
+        data.forEach(course => {
+            course.translatedClass = getTitle(course.class);
+        });
         setFleets(data);
     }
 
@@ -29,7 +31,7 @@ const CourseList = (props) => {
             'ppa': 'Piloto Privado de Avion',
             'instructor': 'Instructor de Vuelo',
             'comercial': 'Piloto Comercial de Avion',
-            'primera': 'Piloto de Primera Clase',        
+            'primera': 'Piloto de Primera Clase',
         };
         return titles[item];
     }
@@ -39,10 +41,10 @@ const CourseList = (props) => {
             {fleets.map((item) => (
                 <Card key={item.class}>
                     <Card.Image source={{ uri: `${BASE_URL}/courses/img/${item.class}` }} />
-                    <Card.Title>{getTitle(item.class)}</Card.Title>
+                    <Card.Title style={styles.title}>{item.translatedClass}</Card.Title>
                     <Card.Divider />
                     <View>
-                        <Button title='Ver Mas' onPress={() => props.navigation.navigate('CourseDetail', { item })} />
+                        <Button color="#0D2154" title='Ver Mas' onPress={() => props.navigation.navigate('CourseDetail', { item })} />
                     </View>
                 </Card>
             ))}
@@ -55,6 +57,12 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         padding: 15,
+    },
+    title: {
+        fontSize: 22,
+        marginTop: 5,
+        fontWeight: 'bold',
+        textAlign: 'center',
     }
 })
 

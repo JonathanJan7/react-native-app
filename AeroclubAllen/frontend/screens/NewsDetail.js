@@ -1,31 +1,86 @@
 import React from 'react'
-import { View, Text, ScrollView } from 'react-native'
+import { View, Text, ScrollView, StyleSheet, TouchableOpacity, Alert } from 'react-native'
 import { Card, Button, Icon } from '@rneui/themed';
-import { BASE_URL } from '../api'
+import { BASE_URL, deleteNews } from '../api'
+import { useNavigation } from '@react-navigation/native';
 
 const NewsDetail = (props) => {
-    //recibo el item que me pasa la screen anterior
-    console.log(props.route.params.item);
+    const navigation = useNavigation();
     const item = props.route.params.item;
+
+    handleDelete = async (item) => {        
+        const response = await deleteNews(item.id);        
+        if (response.status !== 200) {
+            Alert.alert(
+                'Error',
+                'No se ha podido eliminar la noticia',
+                [
+                    {
+                        text: 'OK',
+                    },
+                ],
+                { cancelable: false }
+            );
+            return;
+        } else {
+            Alert.alert(
+                'Éxito',
+                'Noticia eliminada correctamente',
+                [
+                    {
+                        text:'OK',
+                        onPress: () => navigation.goBack(),
+                    },
+                ],
+                {cancelable: false}
+            );
+        }
+    }
 
     return (
         <ScrollView >
             <Card key={item.id}>
-                {/* Imagen */}
                 <Card.Image source={{ uri: `${BASE_URL}/news/img/${item.id}` }} />
-                {/* Título de la Card */}
-                <Card.Title>{item.title}</Card.Title>
+                <Card.Title style={styles.title}>{item.title}</Card.Title>
                 <Card.Divider />
-                {/* Boton para mas detalles */}
                 <Text style={{ marginBottom: 10 }}>
                     Fecha: {item.date}
                 </Text>
                 <Text style={{ marginBottom: 10 }}>
                     Descripcion: {item.description}
                 </Text>
+                <Card.Divider />
+                <View>
+                    <TouchableOpacity
+                        style={styles.deleteButton}
+                        onPress={() => handleDelete(item)}
+                    >
+                        <Text style={styles.deleteButtonText}>Eliminar</Text>
+                    </TouchableOpacity>
+                </View>
             </Card>
         </ScrollView>
     )
 }
+
+const styles = StyleSheet.create({
+    deleteButton: {
+        backgroundColor: 'darkred', // Fondo rojo
+        padding: 10,           // Espaciado interno
+        borderRadius: 5,       // Bordes redondeados
+        alignItems: 'center',  // Centrado del texto
+    },
+    deleteButtonText: {
+        color: 'white',        // Texto blanco
+        fontWeight: 'bold',    // Negrita para resaltar
+        fontSize: 16,          // Tamaño de fuente
+    },
+    title: {
+        fontSize: 22,
+        marginTop: 5,
+        fontWeight: 'bold',
+        textAlign: 'center',
+    }
+});
 
 export default NewsDetail

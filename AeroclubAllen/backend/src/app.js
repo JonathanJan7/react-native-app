@@ -44,6 +44,6 @@ app.use("/api", users);
 app.use("/api", auditlog);
 
 // Static webpage
-app.use(express.static('src/static'));
+app.use('/api', express.static('src/static'));
 
 export default app;

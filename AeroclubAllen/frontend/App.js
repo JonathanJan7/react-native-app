@@ -36,7 +36,7 @@ function FleetStackScreen() {
   return (
     <FleetStack.Navigator>
       <FleetStack.Screen name='FleetList' component={FleetList} options={{ title: 'Nuestra Flota' }} />
-      <FleetStack.Screen name='FleetDetail' component={FleetDetail} />
+      <FleetStack.Screen name='FleetDetail' component={FleetDetail} options={{ title: 'Detalles' }}/>
     </FleetStack.Navigator>
   )
 }
@@ -47,7 +47,7 @@ function CourseStackScreen() {
   return (
     <CourseStack.Navigator>
       <CourseStack.Screen name='CourseList' component={CourseList} options={{ title: 'Nuestros Cursos' }} />
-      <CourseStack.Screen name='CourseDetail' component={CourseDetail} />
+      <CourseStack.Screen name='CourseDetail' component={CourseDetail} options={{ title: 'Detalles' }}/>
     </CourseStack.Navigator>
   )
 }
@@ -58,8 +58,8 @@ function NewsStackScreen() {
   return (
     <NewsStack.Navigator>
       <NewsStack.Screen name='NewsList' component={NewsList} options={{ title: 'Noticias' }} />
-      <NewsStack.Screen name='NewsDetail' component={NewsDetail} />
-      <NewsStack.Screen name='CreateNews' component={CreateNews} />
+      <NewsStack.Screen name='NewsDetail' component={NewsDetail} options={{ title: 'Detalles' }}/>
+      <NewsStack.Screen name='CreateNews' component={CreateNews} options={{ title: 'Creación' }}/>
     </NewsStack.Navigator>
   )
 }
@@ -84,10 +84,10 @@ function MyStack() {
           } else if (route.name === 'Home'){
             iconName = focused ? 'home' : 'home-outline';
           }
-          // You can return any component that you like here!
+
           return <Ionicons name={iconName} size={size} color={color} />;
         },
-        tabBarActiveTintColor: '#90d5ff',
+        tabBarActiveTintColor: '#0D2154',
         tabBarInactiveTintColor: 'gray',
         headerShown: false,
       })}

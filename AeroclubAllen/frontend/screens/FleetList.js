@@ -60,10 +60,10 @@ const FleetList = (props) => {
     const renderFleet = ({ item }) => (
         <Card key={item.plate}>
             <Card.Image source={{ uri: `${BASE_URL}/airplane/img/${item.plate}` }} />     
-            <Card.Title>{item.model}</Card.Title>
+            <Card.Title style={styles.title}>{item.model}</Card.Title>
             <Card.Divider />
             <View>
-                <Button title='Ver Mas' onPress={() => props.navigation.navigate('FleetDetail', { item })} />
+                <Button color="#0D2154" title='Ver Mas' onPress={() => props.navigation.navigate('FleetDetail', { item })} />
             </View>
         </Card>
     );
@@ -90,6 +90,12 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         padding: 15,
+    }, 
+    title: {
+        fontSize: 22,
+        marginTop: 5,
+        fontWeight: 'bold',
+        textAlign: 'center',
     }
 })
 

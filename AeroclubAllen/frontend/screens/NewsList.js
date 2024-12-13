@@ -12,83 +12,85 @@ import { Card, Button, Icon } from '@rneui/themed';
 
 const NewsList = (props) => {
 
-    const [fleets, setFleets] = useState([])
+    const [newsList, setNewsList] = useState([])
     const [desde, setDesde] = useState(0); // Valor inicial de "desde"
     const [hasta, setHasta] = useState(4); // Cuántos objetos cargar por consulta
     const [loading, setLoading] = useState(false);
     const [hasMore, setHasMore] = useState(true); // Para saber si hay más datos por cargar
+    const [refreshing, setRefreshing] = useState(false); // Estado para controlar la recarga
 
-    //load news from backend
-    /*const loadFleets = async () => {
-        const data = await getNews();
-        setFleets(data);
-    }*/
 
-    const loadFleets = async () => {
-        if (loading || !hasMore) return;
+    const loadNews = async (reset = false) => {
+        if (loading) return;
 
         setLoading(true);
         try {
-            const data = await getNews(desde, hasta); // Pasamos "desde" y "hasta"
+            if (reset) {
+                setDesde(0);
+                setHasta(4);
+                setHasMore(true);
+            }
 
-            // Si no hay más datos, detenemos la carga
-            if (data.length === 0) {
+            const data = await getNews(reset ? 0 : desde, reset ? 4 : hasta);
+
+            if (reset) {
+                setNewsList(data);
+            } else if (data.length === 0) {
                 setHasMore(false);
             } else {
-                // Filtrar duplicados de los nuevos datos
-                const uniqueData = data.filter(newFleet =>
-                    !fleets.some(existingFleet => existingFleet.id === newFleet.id)
+                const uniqueData = data.filter(
+                    newNews => !newsList.some(existing => existing.id === newNews.id)
                 );
-
-                // Solo concatenar los datos únicos
                 if (uniqueData.length > 0) {
-                    setFleets((fleets) => [...fleets, ...uniqueData]);
-                } else {
-                    console.log('No se encontraron nuevos datos únicos.');
+                    setNewsList((news) => [...news, ...uniqueData]);
                 }
-                //setFleets([...fleets, ...data]); // Concatenamos los nuevos datos con los existentes
-                setDesde(hasta); // Actualizamos "desde" para la próxima consulta
-                setHasta(hasta + 4); // Actualizamos "hasta"
+                setDesde(hasta);
+                setHasta(hasta + 4);
             }
         } catch (error) {
-            console.error('Error al cargar los fleets:', error);
+            console.error('Error al cargar las noticias:', error);
         } finally {
             setLoading(false);
+            if (reset) setRefreshing(false);
         }
     };
 
     useEffect(() => {
-        loadFleets();
-        console.log(fleets); // Verifica si hay duplicados después de cargar datos
-    }, [fleets])
+        loadNews();
+        console.log(newsList);
+    }, [newsList]);
 
     const loadMore = () => {
         if (hasMore && !loading) {
-            loadFleets(); // Cargamos más datos cuando sea necesario
+            loadNews();
         }
     };
 
-    const newObject = props.route.params?.row;//hay un nuevo ojbeto?
+    const handleRefresh = () => {
+        setRefreshing(true);
+        loadNews(true);
+    };
+
+    const newObject = props.route.params?.row;
     
     useFocusEffect(
         React.useCallback(() => {
             if (newObject) {
-                // Agregar el nuevo objeto a la lista existente
-                console.log(newObject);
-                setFleets((fleets) => [...fleets, newObject]);
-                props.route.params.row = 0;//limpiar variable
+                setNewsList([newObject, ...newsList]);
+                props.route.params.row = 0;
+            }else{
+                handleRefresh();
             }
         }, [newObject])
     );
 
-
-    const renderFleet = ({ item }) => (
+    const renderNews = ({ item }) => (
         <Card key={item.id}>
             <Card.Image source={{ uri: `${BASE_URL}/news/img/${item.id}` }} />
             <Card.Title>{item.title}</Card.Title>
             <Card.Divider />
             <View>
-                <Button title='Ver Mas' onPress={() => props.navigation.navigate('NewsDetail', { item })} />
+                <Button color="#0D2154" title='Ver Mas' onPress={() => props.navigation.navigate('NewsDetail', { item })} />
             </View>
         </Card>
     );
@@ -97,15 +99,18 @@ const NewsList = (props) => {
 
     return (
             <FlatList
-                data={fleets}
-                renderItem={renderFleet}
+                data={newsList}
+                renderItem={renderNews}
                 keyExtractor={(item) => (item.id ? item.id.toString() : Math.random().toString())}
                 onEndReached={loadMore}
                 onEndReachedThreshold={0.5} // Cargar más cuando estemos al 50% del final
+                refreshing={refreshing} // Controla el estado de recarga
+                onRefresh={handleRefresh} // Define qué hacer al recargar
                 style={styles.container}
                 ListHeaderComponent={
                     <View style={styles.header}>
                         <Button
+                            color="#0D2154"
                             title="Agregar Noticia"
                             onPress={() => {
                                 props.navigation.navigate('CreateNews')
@@ -122,41 +127,6 @@ const NewsList = (props) => {
             />
     )
 
-    /*return(
-        <FlatList
-            data={fleets}
-            renderItem={renderFleet}
-            keyExtractor={(item) => item.id.toString()}
-            onEndReached={loadMore}
-            onEndReachedThreshold={0.5} // Cargar más cuando estemos al 50% del final
-            style={styles.container}
-            ListFooterComponent={loading ? (
-                <View style={{ padding: 20 }}>
-                    <ActivityIndicator size="large" color="#0000ff" />
-                    <Text style={{ textAlign: 'center', marginTop: 10 }}>Loading...</Text>
-                </View>
-            ) : null}
-        />
-    )*/
-
-    /*return (
-        <ScrollView style={styles.container}>
-            {fleets.map((item) => (
-                <Card key={item.id}>
-                    
-                    <Card.Image source={{ uri: 'https://awildgeographer.files.wordpress.com/2015/02/john_muir_glacier.jpg' }} />
-                    
-                    <Card.Title>{item.title}</Card.Title>
-                    <Card.Divider />
-                    
-                    <View>
-                        <Button title='Ver Mas' onPress={() => props.navigation.navigate('NewsDetail', { item })} />
-                    </View>
-                </Card>
-            ))}
-
-        </ScrollView>
-    )*/
 }
 
 const styles = StyleSheet.create({
@@ -166,7 +136,7 @@ const styles = StyleSheet.create({
     },
     header: {
         marginBottom: 20,
-    },
+    }
 })
 
 export default NewsList

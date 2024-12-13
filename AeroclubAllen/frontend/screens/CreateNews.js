@@ -91,7 +91,7 @@ const CreateNews = (props) => {
                 <TextInput placeholder='Nombre Imagen' onChangeText={(value) => handleChangeText('img', value)} />
             </View>
             <View>
-                <Button title='Crear Noticia' onPress={handleSubmit} />
+                <Button color="#0D2154" title='Crear Noticia' onPress={handleSubmit} />
             </View>
         </ScrollView>
     )

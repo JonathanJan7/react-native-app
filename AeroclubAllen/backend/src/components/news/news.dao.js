@@ -71,8 +71,8 @@ news.getNewsId = async (id) =>{
 //DELETE NEWS
 news.deleteNews = async (id)=> {
     try {
-        [rows] = await pool.query("DELETE FROM news WHERE id=?", [id]);
-        return rows;
+        const [rows] = await pool.query("DELETE FROM news WHERE id=?", [id]);		
+		return rows;
     } catch (error) {
         throw error;
     }

@@ -89,18 +89,17 @@ export const updateNews = async (req, res) => {
 // Delete news
 export const deleteNews = async (req, res) => {
 	const { id } = req.params;
-
+	
 	try {
-		const dbRes = await news.deleteNews(id);
+		const dbRes = await news.deleteNews(id);		
 
 		if (dbRes.affectedRows === 0) {
 			return res.status(404).json({
 				message: "New not found",
 			});
-		} else {
-			await auditlog.createLog(req.user.dni, "deletion", "news", id);
-			res.send("News Deleted");
 		}
+		
+		res.send("News Deleted");
 	} catch (e) {
 		somethingWentWrong500(e, res);
 	}

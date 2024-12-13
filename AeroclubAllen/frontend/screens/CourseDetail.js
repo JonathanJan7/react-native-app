@@ -4,8 +4,6 @@ import { Card, Button, Icon } from '@rneui/themed';
 import { BASE_URL } from '../api'
 
 const CourseDetail = (props) => {
-    //recibo el item que me pasa la screen anterior sdfsdf
-    console.log(props.route.params.item);
     const item = props.route.params.item;
 
     return (
@@ -14,7 +12,7 @@ const CourseDetail = (props) => {
                 {/* Imagen */}
                 <Card.Image source={{ uri: `${BASE_URL}/courses/img/${item.class}`}} />
                 {/* Título de la Card */}
-                <Card.Title>{item.class}</Card.Title>
+                <Card.Title>{item.translatedClass}</Card.Title>
                 <Card.Divider />
                 {/* Boton para mas detalles */}
                 <Text style={{ marginBottom: 10 }}>
