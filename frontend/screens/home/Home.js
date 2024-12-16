@@ -1,9 +1,10 @@
 import React from 'react'
-import { View, Text, Image, StyleSheet, ImageBackground, TouchableOpacity, ScrollView   } from 'react-native'
+import { View, Text, Image, ImageBackground, TouchableOpacity, ScrollView   } from 'react-native'
 import Icon from 'react-native-vector-icons/Ionicons';
-import NewsSection from './NewsSection';
-import Resume from './Resume';
-import WeatherSection from './Weather';
+import NewsSection from './NewsSection/NewsSection';
+import TrajectorySection from './TrajectorySection/TrajectorySection';
+import WeatherSection from './WeatherSection/WeatherSection';
+import { styles } from './Home.styles';
 
 function Home() {
     return (
@@ -22,7 +23,7 @@ function Home() {
                     </Text>
                 </View>
 
-                <Resume />
+                <TrajectorySection />
 
                 <NewsSection />
 
@@ -50,63 +51,5 @@ function Home() {
         
     )
 }
-
-const styles = StyleSheet.create({
-    background:{
-        flex: 1,
-        //justifyContent: 'center',
-        alignItems: 'center',
-        width: '100%',
-        height: '100%',
-    },
-    container:{
-        justifyContent: 'flex-start',
-        alignItems: 'center',
-        backgroundColor: 'rgba(0, 0, 0, 0.4)',  // Fondo semi-transparente sobre la imagen
-        padding: 20,
-        marginTop:120,
-        borderRadius: 10,
-        /*flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#f5f5f5',*/
-    },
-    title:{
-        fontSize: 28,
-        fontWeight: 'bold',
-        marginBottom: 10,
-        color: 'white',
-    },
-    subTitle:{
-        fontSize: 18,
-        color: 'white',
-    },
-    logo:{
-        width: 70,
-        height: 70,
-        borderRadius: 10,
-    },
-    description:{
-        fontSize: 16,
-        color: '#eee',                // Texto claro para el párrafo
-        textAlign: 'center',           // Centra el texto
-        marginTop: 20,                 // Espacio entre el subtítulo y el párrafo
-        lineHeight: 22,                // Mejora la legibilidad
-    },
-    socialContainer: {
-        // position: 'absolute',
-        bottom: 20,
-        alignItems: 'center',
-    },
-    socialTitle: {
-        fontSize: 16,
-        marginBottom: 10,
-    },
-    socialIcons: {
-        flexDirection: 'row',
-        justifyContent: 'space-around',
-        width: 100,
-    },
-})
 
 export default Home

@@ -3,6 +3,7 @@ import { View, Button, TextInput, ScrollView, StyleSheet, Text, Alert } from 're
 import ImageUploader from '../../../components/ImageUploader'
 import DatePicker from 'react-native-datepicker';
 import { BASE_URL } from '../../../api'
+import { styles } from './CreateNews.styles'
 
 const CreateNews = (props) => {
 
@@ -96,19 +97,5 @@ const CreateNews = (props) => {
         </ScrollView>
     )
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        padding: 35
-    },
-    inputGroup: {
-        flex: 1,
-        padding: 0,
-        marginBottom: 15,
-        borderBottomWidth: 1,
-        borderBottomColor: '#cccccc'
-    }
-})
 
 export default CreateNews

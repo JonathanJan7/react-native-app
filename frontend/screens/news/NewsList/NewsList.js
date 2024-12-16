@@ -3,7 +3,7 @@ import { View, Text, FlatList, ScrollView, StyleSheet, Image, ActivityIndicator 
 import { getNews } from '../../../api';
 import { useFocusEffect } from '@react-navigation/native';
 import { BASE_URL } from '../../../api'
-
+import { styles } from './NewsList.styles';
 import { Card, Button, Icon } from '@rneui/themed';
 
 
@@ -122,15 +122,5 @@ const NewsList = (props) => {
     )
 
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        padding: 15,
-    },
-    header: {
-        marginBottom: 20,
-    }
-})
 
 export default NewsList

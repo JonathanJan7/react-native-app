@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { View, ScrollView, StyleSheet } from 'react-native';
+import { View, ScrollView } from 'react-native';
 import { getCourses } from '../../../api';
 import { BASE_URL } from '../../../api'
 import { Card, Button } from '@rneui/themed';
+import { styles } from './CourseList.styles';
 
 
 const CourseList = (props) => {
@@ -47,18 +48,5 @@ const CourseList = (props) => {
         </ScrollView>
     )
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        padding: 15,
-    },
-    title: {
-        fontSize: 22,
-        marginTop: 5,
-        fontWeight: 'bold',
-        textAlign: 'center',
-    }
-})
 
 export default CourseList;

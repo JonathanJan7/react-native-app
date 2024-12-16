@@ -2,9 +2,8 @@ import React, {useEffect, useState} from 'react';
 import { View, Text, FlatList, ScrollView, StyleSheet, Image, ActivityIndicator } from 'react-native';
 import { getFleets } from '../../../api';
 import { BASE_URL } from '../../../api'
-
+import { styles } from './FleetList.styles';
 import { Card, Button, Icon } from '@rneui/themed';
-
 
 const FleetList = (props) => {
 
@@ -80,18 +79,5 @@ const FleetList = (props) => {
         />
     )
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        padding: 15,
-    }, 
-    title: {
-        fontSize: 22,
-        marginTop: 5,
-        fontWeight: 'bold',
-        textAlign: 'center',
-    }
-})
 
 export default FleetList

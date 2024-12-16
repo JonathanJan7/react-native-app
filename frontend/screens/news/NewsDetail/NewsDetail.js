@@ -3,6 +3,7 @@ import { View, Text, ScrollView, StyleSheet, TouchableOpacity, Alert } from 'rea
 import { Card, Button, Icon } from '@rneui/themed';
 import { BASE_URL, deleteNews } from '../../../api'
 import { useNavigation } from '@react-navigation/native';
+import { styles } from './NewsDetail.styles'
 
 const NewsDetail = (props) => {
     const navigation = useNavigation();
@@ -62,25 +63,5 @@ const NewsDetail = (props) => {
         </ScrollView>
     )
 }
-
-const styles = StyleSheet.create({
-    deleteButton: {
-        backgroundColor: 'darkred', // Fondo rojo
-        padding: 10,           // Espaciado interno
-        borderRadius: 5,       // Bordes redondeados
-        alignItems: 'center',  // Centrado del texto
-    },
-    deleteButtonText: {
-        color: 'white',        // Texto blanco
-        fontWeight: 'bold',    // Negrita para resaltar
-        fontSize: 16,          // Tamaño de fuente
-    },
-    title: {
-        fontSize: 22,
-        marginTop: 5,
-        fontWeight: 'bold',
-        textAlign: 'center',
-    }
-});
 
 export default NewsDetail
