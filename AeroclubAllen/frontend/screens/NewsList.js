@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, FlatList, ScrollView, StyleSheet, Image, ActivityIndicator } from 'react-native';
 import { getNews } from '../api';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { useFocusEffect } from '@react-navigation/native';
 import { BASE_URL } from '../api'
 
@@ -57,7 +54,6 @@ const NewsList = (props) => {
 
     useEffect(() => {
         loadNews();
-        console.log(newsList);
     }, [newsList]);
 
     const loadMore = () => {
@@ -94,8 +90,6 @@ const NewsList = (props) => {
             </View>
         </Card>
     );
-
-    const Tab = createBottomTabNavigator();
 
     return (
             <FlatList

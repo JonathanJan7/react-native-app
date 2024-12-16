@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, Image, StyleSheet, TouchableOpacity, Button } from 'react-native';
-import { getNews } from '../../api'; // Assuming this is correctly fetching data
+import { View, Text, Image, StyleSheet } from 'react-native';
+import { getNews } from '../../api';
 import { BASE_URL } from '../../api'
 import { useFocusEffect } from '@react-navigation/native';
 

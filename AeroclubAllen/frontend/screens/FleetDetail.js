@@ -4,8 +4,6 @@ import { Card, Button, Icon } from '@rneui/themed';
 import { BASE_URL } from '../api'
 
 const FleetDetail = (props) => {
-    //recibo el item que me pasa la screen anterior
-    console.log(props.route.params.item);
     const item = props.route.params.item;
     
     return (

@@ -5,14 +5,6 @@ import NewsSection from './Home/NewsSection';
 import Resume from './Home/Resume';
 import WeatherSection from './Home/Weather';
 
-/*const { width: viewportWidth } = Dimensions.get('window');
-
-const images = [
-    require('../assets/1.jpeg'),  // Asegúrate de que la ruta sea correcta
-    require('../assets/jet.jpg'),
-    require('../assets/cessna.jpg'),
-];*/
-
 function Home() {
     return (
 

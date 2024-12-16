@@ -1,11 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, FlatList, ScrollView, StyleSheet, Image } from 'react-native';
+import { View, ScrollView, StyleSheet } from 'react-native';
 import { getCourses } from '../api';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { BASE_URL } from '../api'
-import { Card, Button, Icon } from '@rneui/themed';
+import { Card, Button } from '@rneui/themed';
 
 
 const CourseList = (props) => {
@@ -23,8 +20,6 @@ const CourseList = (props) => {
     useEffect(() => {
         loadFleets();
     }, [])
-
-    const Tab = createBottomTabNavigator();
 
     const getTitle = (item) => {
         const titles = {
@@ -66,4 +61,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default CourseList
+export default CourseList;

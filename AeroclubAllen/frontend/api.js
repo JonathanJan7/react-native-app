@@ -1,5 +1,5 @@
 
-export const BASE_URL = 'http://192.168.0.43:3000/api';
+export const BASE_URL = 'http://192.168.1.173:8000/api';
 //const APIFLEETS = 'http://192.168.0.43:3000/api/fleet?x0=0&n=4';
 const APICOURSES = `${BASE_URL}/courses`;
 const APITRAYECTORY = `${BASE_URL}/trajectory`;

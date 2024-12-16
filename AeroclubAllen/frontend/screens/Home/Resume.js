@@ -8,25 +8,11 @@ const Resume = () => {
 
     const loadTrajectories = async () =>{
         const data = await getTrajectories();
-        //console.log(data);
         setTrajectoryData(data);
-
     }
 
     useEffect(() => {
-        // Aquí puedes hacer un fetch a tu API o cargar datos locales
-       /* const data = [
-            { type: 'aeronaves', data: '6 Aeronaves', icon: require('./assets/icons/trajectory/aeronaves.png') },
-            { type: 'alumnos', data: '82 Alumnos Activos', icon: require('./assets/icons/trajectory/alumnos.png') },
-            { type: 'annos', data: 'Más de 80 años', icon: require('./assets/icons/trajectory/antiguedad.png') },
-            { type: 'socios', data: '151 Socios Activos', icon: require('./assets/icons/trajectory/socios.png') },
-        
-        <Image source={item.icon} style={styles.icon} />
-            ];*/
         loadTrajectories();
-        console.log('Datos de trajectoryData:', trajectoryData);
-        //console.log(`${BASE_URL}${trajectoryData[0].icon}`);
-        
     }, []);
 
     const renderItem = ({ item }) => (
@@ -43,8 +29,8 @@ const Resume = () => {
                 data={trajectoryData}
                 renderItem={renderItem}
                 keyExtractor={(item) => item.type}
-                horizontal={false} // Cambiar a true si deseas un carrusel horizontal
-                numColumns={2} // Para mostrar elementos en columnas
+                horizontal={false} 
+                numColumns={2}
                 contentContainerStyle={styles.listContainer}
             />
         </View>
@@ -66,7 +52,7 @@ const styles = StyleSheet.create({
         fontSize: 24,
         fontWeight: 'bold',
         marginBottom: 16,
-        textAlign: 'center', // This centers the title text
+        textAlign: 'center',
         backgroundColor: '#0D2154',
         color: 'white',
         borderRadius: 8,
@@ -74,11 +60,11 @@ const styles = StyleSheet.create({
         width: '100%'
     },
     listContainer: {
-        paddingBottom: 20, // Espaciado al final del listado
+        paddingBottom: 20,
     },
     card: {
-        alignItems: 'center', // Centra el contenido en horizontal
-        justifyContent: 'center', // Centra el contenido en vertical
+        alignItems: 'center',
+        justifyContent: 'center',
         margin: 10,
         padding: 15,
         backgroundColor: 'white',
@@ -87,7 +73,7 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.1,
         shadowRadius: 5,
         elevation: 3,
-        width: '40%', // Ajusta el ancho para dos columnas (evitar conflictos con el flex)
+        width: '40%',
     },
     icon: {
         width: 50,

@@ -1,12 +1,7 @@
 import React, {useState} from 'react'
 import { View, Button, TextInput, ScrollView, StyleSheet, Text } from 'react-native'
-import ImageUploader from '../components/ImageUploader'
-
-
 
 const CreateFleet = () => {
-
-    
     const [state, setState] = useState({
         plate:'',
         name:'',

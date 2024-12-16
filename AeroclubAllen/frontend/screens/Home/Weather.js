@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, Image, StyleSheet } from 'react-native';
-import { getWeather } from '../../api'; // Assuming this is correctly fetching data
+import { getWeather } from '../../api';
 import { BASE_URL } from '../../api';
 
 function WeatherSection() {
