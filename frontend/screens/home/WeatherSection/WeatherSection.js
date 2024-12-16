@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, Image, StyleSheet } from 'react-native';
-import { getWeather } from '../../../api';
-import { BASE_URL } from '../../../api';
+import { getWeather } from '../../../api/weather.api';
+import { BASE_URL } from '../../../config';
 import { styles } from './WeatherSection.styles';
 
 function WeatherSection() {

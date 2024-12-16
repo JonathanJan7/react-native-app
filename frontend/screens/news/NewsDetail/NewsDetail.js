@@ -1,7 +1,8 @@
 import React from 'react'
 import { View, Text, ScrollView, StyleSheet, TouchableOpacity, Alert } from 'react-native'
 import { Card, Button, Icon } from '@rneui/themed';
-import { BASE_URL, deleteNews } from '../../../api'
+import { deleteNews } from '../../../api/news.api';
+import { BASE_URL } from '../../../config';
 import { useNavigation } from '@react-navigation/native';
 import { styles } from './NewsDetail.styles'
 

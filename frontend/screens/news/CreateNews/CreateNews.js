@@ -2,13 +2,12 @@ import React, { useState } from 'react'
 import { View, Button, TextInput, ScrollView, StyleSheet, Text, Alert } from 'react-native'
 import ImageUploader from '../../../components/ImageUploader'
 import DatePicker from 'react-native-datepicker';
-import { BASE_URL } from '../../../api'
+import { BASE_URL } from '../../../config'
 import { styles } from './CreateNews.styles'
+import { createNews } from '../../../api/news.api'
 
 const CreateNews = (props) => {
-
-    // Obtener la fecha actual
-    const currentDate = new Date().toISOString().split('T')[0]; // Fecha en formato YYYY-MM-DD
+    const currentDate = new Date().toISOString().split('T')[0];
 
     const [state, setState] = useState({
         date: currentDate,
@@ -35,14 +34,7 @@ const CreateNews = (props) => {
     const POST_URL = `${BASE_URL}/news`;
     const handleSubmit = async () => {
         try {
-            //Petición POST al backend
-            const response = await fetch(POST_URL, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(payload), 
-            });
+            const response = await createNews(payload);
             
             const result = await response.json();
             const row = result.rows[0];
@@ -53,7 +45,6 @@ const CreateNews = (props) => {
                     [
                         {
                             text:'OK',
-                            //onPress: () => {console.log(result.rows)},
                             onPress: () => props.navigation.navigate('NewsList', {row}),
                         },
                     ],

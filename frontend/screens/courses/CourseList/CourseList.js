@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { View, ScrollView } from 'react-native';
-import { getCourses } from '../../../api';
-import { BASE_URL } from '../../../api'
+import { getCourses } from '../../../api/courses.api';
+import { BASE_URL } from '../../../config';
 import { Card, Button } from '@rneui/themed';
 import { styles } from './CourseList.styles';
 

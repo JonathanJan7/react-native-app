@@ -1,6 +1,5 @@
 import React from "react";
-import { ScrollView } from "react-native";
-import { BASE_URL } from "../../../api";
+import { BASE_URL } from "../../../config";
 import DetailCard from "../../../components/DetailCard";
 
 const CourseDetail = (props) => {

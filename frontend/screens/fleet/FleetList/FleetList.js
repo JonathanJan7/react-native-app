@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import { View, Text, FlatList, ScrollView, StyleSheet, Image, ActivityIndicator } from 'react-native';
-import { getFleets } from '../../../api';
-import { BASE_URL } from '../../../api'
+import { getFleets } from '../../../api/fleet.api';
+import { BASE_URL } from '../../../config';
 import { styles } from './FleetList.styles';
-import { Card, Button, Icon } from '@rneui/themed';
+import { Card, Button } from '@rneui/themed';
 
 const FleetList = (props) => {
 

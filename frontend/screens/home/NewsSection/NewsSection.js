@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, Image } from 'react-native';
-import { getNews } from '../../../api';
-import { BASE_URL } from '../../../api'
+import { getNews } from '../../../api/news.api';
+import { BASE_URL } from '../../../config'
 import { useFocusEffect } from '@react-navigation/native';
 import { styles } from './NewsSection.styles';
 

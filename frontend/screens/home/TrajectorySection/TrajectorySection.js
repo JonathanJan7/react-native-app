@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, Image, FlatList } from 'react-native';
-import { getTrajectories } from '../../../api';
-import { BASE_URL } from '../../../api';
+import { getTrajectories } from '../../../api/trajectory.api';
+import { BASE_URL } from '../../../config';
 import { styles } from './TrajectorySection.styles';
 
 const TrajectorySection = () => {
