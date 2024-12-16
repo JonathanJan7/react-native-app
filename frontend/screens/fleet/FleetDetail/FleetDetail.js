@@ -1,7 +1,7 @@
 import React from 'react'
 import { View, Text, ScrollView } from 'react-native'
 import { Card, Button, Icon } from '@rneui/themed';
-import { BASE_URL } from '../api'
+import { BASE_URL } from '../../../api'
 
 const FleetDetail = (props) => {
     const item = props.route.params.item;

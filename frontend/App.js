@@ -10,15 +10,14 @@ import Ionicons2 from '@expo/vector-icons/Ionicons';
 
 const Stack = createNativeStackNavigator();
 
-import CreateFleet from './screens/CreateFleet';
-import FleetList from './screens/FleetList';
-import FleetDetail from './screens/FleetDetail';
-import CourseList from './screens/CourseList';
-import CourseDetail from './screens/CourseDetail';
-import NewsList from './screens/NewsList';
-import NewsDetail from './screens/NewsDetail';
-import Home from './screens/Home';
-import CreateNews from './screens/CreateNews';
+import FleetList from './screens/fleet/FleetList/FleetList';
+import FleetDetail from './screens/fleet/FleetDetail/FleetDetail';
+import CourseList from './screens/courses/CourseList/CourseList';
+import CourseDetail from './screens/courses/CourseDetail/CourseDetail';
+import NewsList from './screens/news/NewsList/NewsList';
+import NewsDetail from './screens/news/NewsDetail/NewsDetail';
+import CreateNews from './screens/news/CreateNews/CreateNews';
+import Home from './screens/home/Home';
 
 
 /*function MyStack() {

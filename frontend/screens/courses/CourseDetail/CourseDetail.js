@@ -1,7 +1,7 @@
 import React from 'react'
 import { Text, ScrollView } from 'react-native'
 import { Card } from '@rneui/themed';
-import { BASE_URL } from '../api'
+import { BASE_URL } from '../../../api'
 
 const CourseDetail = (props) => {
     const item = props.route.params.item;

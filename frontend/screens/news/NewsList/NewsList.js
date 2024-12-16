@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, FlatList, ScrollView, StyleSheet, Image, ActivityIndicator } from 'react-native';
-import { getNews } from '../api';
+import { getNews } from '../../../api';
 import { useFocusEffect } from '@react-navigation/native';
-import { BASE_URL } from '../api'
+import { BASE_URL } from '../../../api'
 
 import { Card, Button, Icon } from '@rneui/themed';
 

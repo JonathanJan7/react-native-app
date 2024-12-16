@@ -1,9 +1,9 @@
 import React from 'react'
 import { View, Text, Image, StyleSheet, ImageBackground, TouchableOpacity, ScrollView   } from 'react-native'
 import Icon from 'react-native-vector-icons/Ionicons';
-import NewsSection from './Home/NewsSection';
-import Resume from './Home/Resume';
-import WeatherSection from './Home/Weather';
+import NewsSection from './NewsSection';
+import Resume from './Resume';
+import WeatherSection from './Weather';
 
 function Home() {
     return (
@@ -14,7 +14,7 @@ function Home() {
                 style={styles.background}
             >
                 <View style={styles.container}>
-                    <Image source={require('../assets/logo.png')} style={styles.logo} />
+                    <Image source={require('../../assets/logo.png')} style={styles.logo} />
                     <Text style={styles.title}>Aeroclub Allen</Text>
                     <Text style={styles.subTitle}>El Cielo es el Limite</Text>
                     <Text style={styles.description}>

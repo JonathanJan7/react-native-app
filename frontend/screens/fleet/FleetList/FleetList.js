@@ -1,8 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import { View, Text, FlatList, ScrollView, StyleSheet, Image, ActivityIndicator } from 'react-native';
-import { getFleets } from '../api';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { BASE_URL } from '../api'
+import { getFleets } from '../../../api';
+import { BASE_URL } from '../../../api'
 
 import { Card, Button, Icon } from '@rneui/themed';
 

@@ -1,7 +1,7 @@
 import React from 'react'
 import { View, Text, ScrollView, StyleSheet, TouchableOpacity, Alert } from 'react-native'
 import { Card, Button, Icon } from '@rneui/themed';
-import { BASE_URL, deleteNews } from '../api'
+import { BASE_URL, deleteNews } from '../../../api'
 import { useNavigation } from '@react-navigation/native';
 
 const NewsDetail = (props) => {

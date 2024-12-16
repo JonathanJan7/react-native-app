@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { View, Button, TextInput, ScrollView, StyleSheet, Text, Alert } from 'react-native'
-import ImageUploader from '../components/ImageUploader'
+import ImageUploader from '../../../components/ImageUploader'
 import DatePicker from 'react-native-datepicker';
-import { BASE_URL } from '../api'
+import { BASE_URL } from '../../../api'
 
 const CreateNews = (props) => {
 
