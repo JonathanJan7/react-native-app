@@ -29,9 +29,7 @@ function NewsSection() {
             <View style={styles.newsContainer}>
                 {newsList.map((news, index) => (
                     <View key={index} style={styles.newsCard}>
-                        <View style={styles.newsCardImage}>
-							<Image source={{ uri: `${BASE_URL}/news/img/${news.id}` }} />
-                        </View>
+                        <Image style={styles.newsCardImage} source={{ uri: `${BASE_URL}/news/img/${news.id}` }} />
                         <View style={styles.newsCardContent}>
                             <Text style={styles.newsTitle}>{news.title}</Text>
                             <Text style={styles.newsDescription}>{news.description}</Text>

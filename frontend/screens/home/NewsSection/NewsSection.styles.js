@@ -35,8 +35,8 @@ export const styles = StyleSheet.create({
         overflow: 'hidden',
     },
     newsCardImage: {
-        width: '100%',
-        height: 200,
+        width: 'auto',
+        height: 300,
     },
     image: {
         width: '100%',
