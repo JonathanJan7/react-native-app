@@ -10,20 +10,21 @@ export const styles = StyleSheet.create({
     container:{
         justifyContent: 'flex-start',
         alignItems: 'center',
-        backgroundColor: 'rgba(0, 0, 0, 0.4)',
+        backgroundColor: 'rgba(255, 255, 255, 0.7)',
         padding: 20,
-        marginTop:120,
-        borderRadius: 10,
+        paddingTop: 120,
+        // borderRadius: 10,
     },
     title:{
         fontSize: 28,
         fontWeight: 'bold',
-        marginBottom: 10,
-        color: 'white',
+        marginBottom: 15,
+        marginTop: 15,
+        color: '#0D2154',
     },
     subTitle:{
         fontSize: 18,
-        color: 'white',
+        color: '#0D2154',
     },
     logo:{
         width: 70,
@@ -32,8 +33,8 @@ export const styles = StyleSheet.create({
     },
     description:{
         fontSize: 16,
-        color: '#eee',
-        textAlign: 'center',
+        color: '#0D2154',
+        textAlign: 'justify',
         marginTop: 20,
         lineHeight: 22,
     },

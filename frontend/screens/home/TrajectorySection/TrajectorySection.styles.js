@@ -24,6 +24,8 @@ export const styles = StyleSheet.create({
     },
     listContainer: {
         paddingBottom: 20,
+        margin: 20,
+        marginLeft: 25
     },
     card: {
         alignItems: 'center',
