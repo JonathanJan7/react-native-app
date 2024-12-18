@@ -6,18 +6,12 @@ import { styles } from './FleetList.styles';
 import { Card, Button } from '@rneui/themed';
 
 const FleetList = (props) => {
-
+    const maxPerLoad = 4;
     const [fleets, setFleets] = useState([])
     const [desde, setDesde] = useState(0); // Valor inicial de "desde"
-    const [hasta, setHasta] = useState(4); // Cuántos objetos cargar por consulta
+    const [hasta, setHasta] = useState(maxPerLoad); // Cuántos objetos cargar por consulta
     const [loading, setLoading] = useState(false);
     const [hasMore, setHasMore] = useState(true); // Para saber si hay más datos por cargar
-
-    //load fleets from backend
-    /*const loadFleets = async () => {
-        const data = await getFleets();
-        setFleets(data);
-    }*/
 
     const loadFleets = async () => {
         if (loading || !hasMore) return;
@@ -32,7 +26,7 @@ const FleetList = (props) => {
             } else {
                 setFleets([...fleets, ...data]); // Concatenamos los nuevos datos con los existentes
                 setDesde(hasta); // Actualizamos "desde" para la próxima consulta
-                setHasta(hasta + 4); // Actualizamos "hasta"
+                setHasta(hasta + maxPerLoad); // Actualizamos "hasta"
             }
         } catch (error) {
             console.error('Error al cargar los fleets:', error);

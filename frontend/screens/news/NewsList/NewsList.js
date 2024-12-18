@@ -7,9 +7,10 @@ import { styles } from './NewsList.styles';
 import { Card, Button, Icon } from '@rneui/themed';
 
 const NewsList = (props) => {
+    const maxPerLoad = 4;
     const [newsList, setNewsList] = useState([])
     const [desde, setDesde] = useState(0); // Valor inicial de "desde"
-    const [hasta, setHasta] = useState(4); // Cuántos objetos cargar por consulta
+    const [hasta, setHasta] = useState(maxPerLoad); // Cuántos objetos cargar por consulta
     const [loading, setLoading] = useState(false);
     const [hasMore, setHasMore] = useState(true); // Para saber si hay más datos por cargar
     const [refreshing, setRefreshing] = useState(false); // Estado para controlar la recarga
@@ -22,11 +23,11 @@ const NewsList = (props) => {
         try {
             if (reset) {
                 setDesde(0);
-                setHasta(4);
+                setHasta(maxPerLoad);
                 setHasMore(true);
             }
 
-            const data = await getNews(reset ? 0 : desde, reset ? 4 : hasta);
+            const data = await getNews(reset ? 0 : desde, reset ? maxPerLoad : hasta);
 
             if (reset) {
                 setNewsList(data);
@@ -40,7 +41,7 @@ const NewsList = (props) => {
                     setNewsList((news) => [...news, ...uniqueData]);
                 }
                 setDesde(hasta);
-                setHasta(hasta + 4);
+                setHasta(hasta + maxPerLoad);
             }
         } catch (error) {
             console.error('Error al cargar las noticias:', error);
@@ -49,10 +50,6 @@ const NewsList = (props) => {
             if (reset) setRefreshing(false);
         }
     };
-
-    useEffect(() => {
-        loadNews();
-    }, [newsList]);
 
     const loadMore = () => {
         if (hasMore && !loading) {
@@ -66,13 +63,13 @@ const NewsList = (props) => {
     };
 
     const newObject = props.route.params?.row;
-    
+
     useFocusEffect(
         React.useCallback(() => {
             if (newObject) {
                 setNewsList([newObject, ...newsList]);
                 props.route.params.row = 0;
-            }else{
+            } else {
                 handleRefresh();
             }
         }, [newObject])
@@ -90,33 +87,33 @@ const NewsList = (props) => {
     );
 
     return (
-            <FlatList
-                data={newsList}
-                renderItem={renderNews}
-                keyExtractor={(item) => (item.id ? item.id.toString() : Math.random().toString())}
-                onEndReached={loadMore}
-                onEndReachedThreshold={0.5} // Cargar más cuando estemos al 50% del final
-                refreshing={refreshing} // Controla el estado de recarga
-                onRefresh={handleRefresh} // Define qué hacer al recargar
-                style={styles.container}
-                ListHeaderComponent={
-                    <View style={styles.header}>
-                        <Button
-                            color="#0D2154"
-                            title="Agregar Noticia"
-                            onPress={() => {
-                                props.navigation.navigate('CreateNews')
-                            }}
-                        />
-                    </View>
-                }
-                ListFooterComponent={loading ? (
-                    <View style={{ padding: 20 }}>
-                        <ActivityIndicator size="large" color="#0000ff" />
-                        <Text style={{ textAlign: 'center', marginTop: 10 }}>Loading...</Text>
-                    </View>
-                ) : null}
-            />
+        <FlatList
+            data={newsList}
+            renderItem={renderNews}
+            keyExtractor={(item) => (`${item.id}`)}
+            onEndReached={loadMore}
+            onEndReachedThreshold={0.5} // Cargar más cuando estemos al 50% del final
+            refreshing={refreshing} // Controla el estado de recarga
+            onRefresh={handleRefresh} // Define qué hacer al recargar
+            style={styles.container}
+            ListHeaderComponent={
+                <View style={styles.header}>
+                    <Button
+                        color="#0D2154"
+                        title="Agregar Noticia"
+                        onPress={() => {
+                            props.navigation.navigate('CreateNews')
+                        }}
+                    />
+                </View>
+            }
+            ListFooterComponent={loading ? (
+                <View style={{ padding: 20 }}>
+                    <ActivityIndicator size="large" color="#0000ff" />
+                    <Text style={{ textAlign: 'center', marginTop: 10 }}>Loading...</Text>
+                </View>
+            ) : null}
+        />
     )
 
 }

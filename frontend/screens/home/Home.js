@@ -11,7 +11,7 @@ function Home() {
 
         <ScrollView>
             <ImageBackground
-                source={{ uri: 'https://images.unsplash.com/photo-1506503214502-57cafe4201a9?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' }}  // Imagen de fondo local
+                source={{ uri: 'https://images.unsplash.com/photo-1506503214502-57cafe4201a9?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' }}
                 style={styles.background}
             >
                 <View style={styles.container}>
@@ -28,23 +28,6 @@ function Home() {
                 <NewsSection />
 
                 <WeatherSection />
-
-                {/* Sección de Redes Sociales<NewsSection />  <NewsSection />*/}
-                <View style={styles.socialContainer}>
-                    <Text style={styles.socialTitle}>Síguenos en:</Text>
-                    <View style={styles.socialIcons}>
-                        <TouchableOpacity>
-                            <Icon name="logo-facebook" size={30} color="#3b5998" />
-                        </TouchableOpacity>
-                        <TouchableOpacity>
-                            <Icon name="logo-twitter" size={30} color="#1DA1F2" />
-                        </TouchableOpacity>
-                        <TouchableOpacity>
-                            <Icon name="logo-instagram" size={30} color="#C13584" />
-                        </TouchableOpacity>
-                    </View>
-                    <Text>Version 1.0</Text>
-                </View>
             </ImageBackground>
         </ScrollView>
         

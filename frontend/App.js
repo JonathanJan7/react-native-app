@@ -1,15 +1,7 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Button, ImageBackground } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { createDrawerNavigator } from '@react-navigation/drawer';
-
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import Ionicons2 from '@expo/vector-icons/Ionicons';
-
-const Stack = createNativeStackNavigator();
-
 import FleetList from './screens/fleet/FleetList/FleetList';
 import FleetDetail from './screens/fleet/FleetDetail/FleetDetail';
 import CourseList from './screens/courses/CourseList/CourseList';
@@ -19,16 +11,6 @@ import NewsDetail from './screens/news/NewsDetail/NewsDetail';
 import CreateNews from './screens/news/CreateNews/CreateNews';
 import Home from './screens/home/Home';
 
-
-/*function MyStack() {
-  return (
-    <Stack.Navigator>
-      <Stack.Screen name='FleetList' component={FleetList} />
-      <Stack.Screen name='CreateFleet' component={CreateFleet} />
-      <Stack.Screen name='FleetDetail' component={FleetDetail} />
-    </Stack.Navigator>
-  )
-}*/
 //Stack para la flota
 const FleetStack = createNativeStackNavigator();
 function FleetStackScreen() {
@@ -98,23 +80,8 @@ function MyStack() {
       <Tab.Screen name="Noticias" component={NewsStackScreen} />
     </Tab.Navigator>
   )
-  
 }
 
-const Drawer = createDrawerNavigator();
-
-
-/*export default function App() {
-  return (
-    <NavigationContainer>
-        <Drawer.Navigator initialRouteName={"Home"}>
-          <Drawer.Screen name="Home" component={MyStack} />
-          <Drawer.Screen name="CreateFleet" component={CreateFleet} />
-        </Drawer.Navigator>
-    </NavigationContainer>
-    
-  );
-}*/
 export default function App() {
   return (
       <NavigationContainer>
@@ -122,75 +89,3 @@ export default function App() {
       </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  background: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    width: '100%',
-    height: '100%',
-  }
-});
-
-/*
-function DetailsScreen() {
-  return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Details!</Text>
-    </View>
-  );
-}
-
-function HomeScreen({ navigation }) {
-  return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Home screen</Text>
-      <Button
-        title="Go to Details"
-        onPress={() => navigation.navigate('Details')}
-      />
-    </View>
-  );
-}
-
-function SettingsScreen({ navigation }) {
-  return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Settings screen</Text>
-      <Button
-        title="Go to Details"
-        onPress={() => navigation.navigate('Details')}
-      />
-    </View>
-  );
-}
-
-const HomeStack = createNativeStackNavigator();
-
-function HomeStackScreen() {
-  return (
-    <HomeStack.Navigator>
-      <HomeStack.Screen name="Home" component={HomeScreen} />
-      <HomeStack.Screen name="Details" component={DetailsScreen} />
-    </HomeStack.Navigator>
-  );
-}
-
-const SettingsStack = createNativeStackNavigator();
-
-function SettingsStackScreen() {
-  return (
-    <SettingsStack.Navigator>
-      <SettingsStack.Screen name="Settings" component={SettingsScreen} />
-      <SettingsStack.Screen name="Details" component={DetailsScreen} />
-    </SettingsStack.Navigator>
-  );
-}
-*/
