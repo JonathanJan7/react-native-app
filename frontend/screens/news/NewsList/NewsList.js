@@ -7,13 +7,13 @@ import { styles } from './NewsList.styles';
 import { Card, Button, Icon } from '@rneui/themed';
 
 const NewsList = (props) => {
-    const maxPerLoad = 4;
+    const maxPerLoad = 4; // Cantidad de noticias a cargar por vez
     const [newsList, setNewsList] = useState([])
-    const [desde, setDesde] = useState(0); // Valor inicial de "desde"
-    const [hasta, setHasta] = useState(maxPerLoad); // Cuántos objetos cargar por consulta
+    const [desde, setDesde] = useState(0);
+    const [hasta, setHasta] = useState(maxPerLoad);
     const [loading, setLoading] = useState(false);
-    const [hasMore, setHasMore] = useState(true); // Para saber si hay más datos por cargar
-    const [refreshing, setRefreshing] = useState(false); // Estado para controlar la recarga
+    const [hasMore, setHasMore] = useState(true);
+    const [refreshing, setRefreshing] = useState(false);
 
 
     const loadNews = async (reset = false) => {

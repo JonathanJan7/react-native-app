@@ -1,15 +1,15 @@
 import { StyleSheet } from 'react-native';
 export const styles = StyleSheet.create({
     deleteButton: {
-        backgroundColor: 'darkred', // Fondo rojo
-        padding: 10,           // Espaciado interno
-        borderRadius: 5,       // Bordes redondeados
-        alignItems: 'center',  // Centrado del texto
+        backgroundColor: 'darkred',
+        padding: 10,
+        borderRadius: 5,
+        alignItems: 'center',
     },
     deleteButtonText: {
-        color: 'white',        // Texto blanco
-        fontWeight: 'bold',    // Negrita para resaltar
-        fontSize: 16,          // Tamaño de fuente
+        color: 'white',
+        fontWeight: 'bold',
+        fontSize: 16,
     },
     title: {
         fontSize: 22,

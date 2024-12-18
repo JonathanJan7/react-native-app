@@ -66,7 +66,7 @@ const CreateNews = (props) => {
                 <Text>Fecha:</Text>
                 <TextInput
                     value={currentDate}
-                    editable={false} // Hacer que el campo no sea editable
+                    editable={false}
                     selectTextOnFocus={false} // Evitar que se seleccione el texto
                 />
             </View>
