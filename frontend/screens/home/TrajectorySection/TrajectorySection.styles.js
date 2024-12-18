@@ -20,17 +20,18 @@ export const styles = StyleSheet.create({
         color: 'white',
         borderRadius: 8,
         padding: 10,
-        width: '100%'
+        width: '100%',
     },
     listContainer: {
-        paddingBottom: 20,
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        justifyContent: 'space-between',
         margin: 20,
-        marginLeft: 25
+        gap: 30
     },
     card: {
         alignItems: 'center',
         justifyContent: 'center',
-        margin: 10,
         padding: 15,
         backgroundColor: 'white',
         borderRadius: 10,
@@ -38,7 +39,7 @@ export const styles = StyleSheet.create({
         shadowOpacity: 0.1,
         shadowRadius: 5,
         elevation: 3,
-        width: '40%',
+        width: '45%',
     },
     icon: {
         width: 50,
